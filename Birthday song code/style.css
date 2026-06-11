@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); /* ডার্ক ফিউচারিস্টিক ব্যাকগ্রাউন্ড */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* The exact .pleaseClick class logic in the screenshot */
+.pleaseClick {
+    position: absolute;
+    background: hsla(210, 50%, 15%, 0.75); /* */
+    font-size: 90%;
+    width: 22em;
+    padding: 25px;
+    text-align: center;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    z-index: 10;
+    /* The exact animation from the screenshot */
+    animation: jump 1s ease-in-out infinite alternate; 
+}
+
+@keyframes jump {
+    from { transform: translateY(0); }
+    to { transform: translateY(-12px); }
+}
+
+/* Text area for scrolling */
+.click-header {
+    color: #38bdf8;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.lyrics-box {
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    margin: 15px 0;
+}
+
+.lyrics-track {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    transition: top 0.5s ease-in-out;
+}
+
+.lyrics-track p {
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    line-height: 30px;
+    height: 30px;
+    opacity: 0.3;
+    transition: all 0.3s;
+}
+
+/*Active lyrics will be highlighted. */
+.lyrics-track p.active {
+    color: #ffffff;
+    opacity: 1;
+    font-weight: 600;
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* Progress bar style (like the bottom line in the screenshot) */
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    transition: width 0.1s linear;
+}
+
+/* Floating geometric shapes in the background(Triangles & Squares) */
+.shapes-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.2;
+    border: 2px solid #ffffff;
+    animation: floatShapes 12s infinite linear;
+}
+
+/* Triangle shape generator */
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-bottom-color: rgba(255,255,255,0.3);
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+}
+
+@keyframes floatShapes {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.2; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
